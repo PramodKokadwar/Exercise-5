@@ -1,8 +1,10 @@
 package com.capmo.qa.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 
 import com.capmo.qa.base.TestBase;
 
@@ -30,12 +32,21 @@ public class HomePage extends TestBase {
 	@FindBy(xpath = "//a[@id='reset_sidebar_link']")
 	WebElement resetLink;
 	
+	@FindBy(xpath = "//select[@class='product_sort_container']")
+	WebElement productFilter;
+	
 	
 	// Initializing the Page Objects:
 	public HomePage() {
 		PageFactory.initElements(driver, this);
 	}
 	
+	
+	public void filterSearchbox(String filterName)
+	{
+		Select dropdown = new Select(driver.findElement(By.xpath("productFilter")));  
+		dropdown.selectByValue("lohi");
+	}
 
 	
 	

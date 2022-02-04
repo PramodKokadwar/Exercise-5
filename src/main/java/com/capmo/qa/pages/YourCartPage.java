@@ -16,11 +16,17 @@ public class YourCartPage extends TestBase {
 	@FindBy(xpath = "//button[@id='continue-shopping']")
 	WebElement continueShopping;
 	
+	@FindBy(xpath = "//button[@id='continue-shopping']")
+	WebElement continueShopping;
+	
 	 
 	// Initializing the Page Objects:
 		public YourCartPage() {
 			PageFactory.initElements(driver, this);
 		}
+		
+		
+		
 		
 		
 }

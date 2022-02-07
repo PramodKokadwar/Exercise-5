@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name=" Capmo Task Automation Test Suite">
+	<listeners>
+		<listener class-name="com.qa.ExtentReport.ExtentReporterNG" />
+	</listeners>
+
+	<test name = "Parallel Capmo Test" parallel = "classes" thread-count = "2">
+		<classes>
+			<class name="com.copmo.qa.testcases.CapmoLoginTest"></class>
+			<class name="com.copmo.qa.testcases.CapmoProductTest"></class>
+		</classes>
+	</test>
+</suite>

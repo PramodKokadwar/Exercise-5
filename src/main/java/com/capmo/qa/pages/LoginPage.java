@@ -17,6 +17,11 @@ public class LoginPage extends TestBase {
 	
 	@FindBy(id = "login-button")
 	WebElement loginBtn;
+	
+	@FindBy(xpath = "//h3[@data-test='error']")
+	WebElement loginErrorMsg;
+	
+	
 
 
 	// Initializing the Page Objects:

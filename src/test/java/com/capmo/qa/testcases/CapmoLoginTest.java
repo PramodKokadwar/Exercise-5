@@ -1,8 +1,10 @@
 package com.capmo.qa.testcases;
 
 import org.testng.Assert;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import com.capmo.qa.base.TestBase;
@@ -22,7 +24,7 @@ public class CapmoLoginTest extends TestBase {
 	}
 
 
-	@BeforeClass
+	@BeforeMethod
 	public void setUp() {
 		initialization();
 		testUtil = new TestUtil();
@@ -30,9 +32,8 @@ public class CapmoLoginTest extends TestBase {
 		loginPage = new LoginPage();	 
 	}
 	
-	
-	
-	@Test(priority = 2)
+
+	@Test
 	public void verifyHomePageTitleTest() throws InterruptedException {
 
 		// Verify title of home page
@@ -42,24 +43,31 @@ public class CapmoLoginTest extends TestBase {
 	}
 	
 	
-	@Test(priority = 1)
+	@Test
 	public void verifyLoginWithValidCredentials() throws InterruptedException {
 
 		
 		loginPage.doLogin("standard_user", "secret_sauce");
-	 
+		// verify login is successfully.
+
+		// Verify is successfully login or not
+		loginPage.verifyLoginIsSuccessful();
 	}
 	
-	@Test(priority = 1)
+	@Test
 	public void verifyLoginWithInValidCredentials() throws InterruptedException {
 
 		
 		loginPage.doLogin("standard", "secret");
+		
+		// Verify assertion to verify error message
+		Assert.assertEquals(loginPage.verifyErrorMessage(), "Epic sadface: Username and password do not match any user in this service",
+				"Login Page title not matched");
 	 
 	}
 	
-	
-	@AfterClass
+
+	@AfterMethod
 	public void tearDown() {
 		driver.quit();
 	}

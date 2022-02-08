@@ -24,7 +24,10 @@ public class YourCartPage extends TestBase {
 		}
 		
 		
-		
+		public void clickOnCheckoutButton()
+		{
+			checkOutButton.click();
+		}
 		
 		
 }
